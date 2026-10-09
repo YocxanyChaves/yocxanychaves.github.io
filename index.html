@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Funnel+Display:wght@300..800&family=Jomhuria&family=Kings&family=Mitr:wght@200;300;400;500;600;700&family=Montserrat&display=swap" rel="stylesheet">
+    <!-- Righteous para los títulos de sección (la misma del correo 3D); el resto usa Trebuchet -->
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
     <meta name="google-site-verification" content="PwNcXz-j2XMxBBsVZc53vC2zfBUb0NT8MLVyQ5dYr_g" />
 
@@ -40,7 +39,6 @@
 <body>
 
     <canvas id="manchas"></canvas>
-    <div id="canvas-texto-3d"><span id="hover-message">Copiar correo!</span></div>
     <div id="copy-message">¡Copiado!</div>
 
     <script src="https://unpkg.com/three@0.124.0/build/three.min.js"></script>
@@ -53,10 +51,14 @@
 
             <div class="nav-left"></div>
 
-            <ul class="nav-center">
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#projects-section">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+            <!-- Íconos de Lucide (lucide.dev, licencia ISC) como SVG inline -->
+            <ul class="nav-center" id="menu-iconos">
+                <li class="burbuja" aria-hidden="true"></li>
+                <li><a href="#inicio" data-seccion="inicio" aria-label="Inicio" data-tooltip="Inicio"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></a></li>
+                <li><a href="#habilidades" data-seccion="habilidades" aria-label="Lenguajes" data-tooltip="Lenguajes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></a></li>
+                <li><a href="#sobre-mi" data-seccion="sobre-mi" aria-label="Sobre mí" data-tooltip="Sobre mí"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a></li>
+                <li><a href="#projects-section" data-seccion="projects-section" aria-label="Proyectos" data-tooltip="Proyectos"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></a></li>
+                <li><a href="#contacto" data-seccion="contacto" aria-label="Contacto" data-tooltip="Contacto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></li>
             </ul>
 
             <div class="nav-right">
@@ -80,7 +82,12 @@
         </nav>
     </header>
 
-    <div id="container">
+    <!-- Cada sección es una "página"; en compu se pasa de una a otra como un carrusel -->
+    <main id="paginas">
+    <div class="carril">
+
+    <div id="inicio" class="pagina">
+        <div id="canvas-texto-3d"><span id="hover-message">Copiar correo!</span></div>
         <div id="sidebar">
 
             <h1>
@@ -89,9 +96,8 @@
         </div>
     </div>
 
-    <div class="rgb-divider"></div>
 
-    <section id="habilidades">
+    <section id="habilidades" class="pagina">
         <h2>Lenguajes conocidos</h2>
         <div class="skills-grid">
             <div class="skill-item" data-lang="csharp">
@@ -120,19 +126,13 @@
             </div>
             </div>
 
-        <div id="info-bubble" class="info-bubble">
-            <h3 id="bubble-title"></h3>
-            <p id="bubble-description"></p>
-            <button id="bubble-close">X</button>
-        </div>
     </section>
 
-    <div class="rgb-divider"></div>
 
-    <section id="sobre-mi">
+    <section id="sobre-mi" class="pagina">
+        <h2>Sobre mí</h2>
         <div class="about-me-container">
             <div class="about-me-content">
-                <h2>Sobre mí</h2>
                 <div class="intro-paragraph">
                     <p>
                         Soy Yocxany Chaves González, estudiante de último año de Informática Empresarial 
@@ -169,9 +169,8 @@
         </div>
     </section>
 
-    <div class="rgb-divider"></div>
 
-    <section id="projects-section">
+    <section id="projects-section" class="pagina">
         <h2>Mis Proyectos</h2>
         <div class="carousel-window">
             <div class="projects-container">
@@ -192,51 +191,81 @@
                 </div>
                 </div>
         </div>
+
+        <!-- Navegador del carrusel: flechas y un puntito por proyecto (js/carrusel.js) -->
+        <div class="proyectos-nav">
+            <button type="button" class="proyectos-flecha" data-direccion="-1" aria-label="Proyecto anterior"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <div class="proyectos-puntos" aria-label="Elegir proyecto"></div>
+            <button type="button" class="proyectos-flecha" data-direccion="1" aria-label="Proyecto siguiente"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
     </section>
 
-    <div class="rgb-divider"></div>
-
-    <section id="contacto">
+    <section id="contacto" class="pagina">
         <div class="neon-border">
             <div class="form-container">
                 <h2>Contáctame</h2>
+                <p class="form-subtitulo">¿Tienes una idea, un proyecto o una propuesta? Escríbeme y te respondo pronto.</p>
 
                 <form id="contactForm">
 
-                    <div class="input-group">
-                        <label for="name">Nombre Completo</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
+                    <div class="form-fila">
+                        <div class="input-group">
+                            <label for="name">Nombre Completo</label>
+                            <div class="campo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                <input type="text" id="name" name="name" placeholder="¿Cómo te llamas?" autocomplete="name" required>
+                            </div>
+                        </div>
 
-                    <div class="input-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required>
+                        <div class="input-group">
+                            <label for="email">Correo Electrónico</label>
+                            <div class="campo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="input-group">
                         <label for="message">Tu Mensaje</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <div class="campo campo-mensaje">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <textarea id="message" name="message" placeholder="Cuéntame en qué te puedo ayudar..." required></textarea>
+                        </div>
                     </div>
 
                     <button type="submit" class="submit-btn">
-                        Enviar Mensaje
+                        <span>Enviar Mensaje</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
                     </button>
 
                 </form>
 
-                <div class="message" id="formMessage"></div>
+                <div class="message" id="formMessage" role="status"></div>
             </div>
         </div>
     </section>
 
+    </div>
+    </main>
+
+    <div id="info-bubble" class="info-bubble">
+        <h3 id="bubble-title"></h3>
+        <p id="bubble-description"></p>
+        <button id="bubble-close">X</button>
+    </div>
+
     <script src="js/manchas.js"></script>
+    <script src="assets/fonts/righteous.js"></script>
     <script src="js/letras.js"></script>
-    <script src="js/skills.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/about-me.js"></script>
     <script src="js/carrusel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/contacto.js"></script>
+    <script src="js/paginas.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/profundidad.js"></script>
     
 </body>
 </html>

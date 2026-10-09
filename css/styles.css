@@ -17,6 +17,13 @@ body {
     min-height: 100vh;
 }
 
+/* Los campos y botones no heredan la fuente por defecto */
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
 header {
     position: fixed;
     width: 100%;
@@ -26,7 +33,7 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
     padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .main-nav {
@@ -103,19 +110,19 @@ header {
 
 .nav-item {
     margin: 0;
-    position: relative; 
+    position: relative;
 }
 
 .nav-link {
-    font-family: 'Montserrat', sans-serif; 
-    font-size: 1.1em; 
-    font-weight: 600; 
-    text-decoration: none; 
+    font-family: inherit;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
     color: #ffe6fb;
-    padding: 8px 0; 
-    transition: color 0.3s ease-in-out, transform 0.2s ease-out; 
+    padding: 8px 0;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-out;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     display: inline-block;
 }
 
@@ -128,15 +135,15 @@ header {
     content: '';
     position: absolute;
     bottom: 0;
-    left: -100%; 
+    left: -100%;
     width: 100%;
-    height: 3px; 
-    background-color: #f573ee; 
-    transition: left 0.3s ease-in-out; 
+    height: 3px;
+    background-color: #f573ee;
+    transition: left 0.3s ease-in-out;
 }
 
 .nav-link:hover::before {
-    left: 0; 
+    left: 0;
 }
 
 
@@ -156,7 +163,7 @@ header {
 }
 
 .nav-link:hover::after {
-    width: 150%; 
+    width: 150%;
     height: 150%;
     opacity: 0.2;
 }
@@ -181,12 +188,12 @@ header {
     }
 }
 
-#container {
-    display: flex; 
+#inicio {
+    display: flex;
     width: 100%;
     position: relative;
-    z-index: 1; 
-    padding-top: 250px; 
+    z-index: 1;
+    padding-top: 250px;
     padding-bottom: 50px;
 }
 
@@ -205,19 +212,18 @@ header {
     margin-top: -65px;
 }
 
-#manchas { 
-    padding: 0; 
+#manchas {
+    padding: 0;
     display: block;
     position: fixed;
     width: 100%;
     height: 100vh;
-    z-index: -1; 
+    z-index: -1;
     pointer-events: none;
 }
 
 h1 {
-    
-    font-size: 120px;
+    font-size: clamp(2.6rem, 8vw, 120px);
     color: rgb(255, 230, 251);
 }
 
@@ -232,74 +238,6 @@ section {
     margin-top: 50px;
 }
 
-.rgb-divider {
-    width: 80%;
-    height: 4px;
-    margin: 100px auto; 
-    border-radius: 5px;
-    position: relative;
-    z-index: 5;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(255, 74, 255, 0.7);
-}
-
-.rgb-divider::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300%;
-    height: 100%;
-    background: linear-gradient(
-        to right,
-        #ff0000 0%,
-                #ff8c00 15%,
-                #ffff00 30%,
-                #00ff00 45%,
-                #00e6e6 55%,
-                #0000ff 65%,  /* Menos espacio para el azul */
-                #9400d3 75%,  /* Menos espacio para el índigo */
-                #ff0000 100%
-    );
-    background-size: 33.33% 100%;
-    animation: rgb-slide 5s linear infinite;
-}
-
-@keyframes rgb-slide {
-    0% {
-        background-position: 0% 0; 
-    }
-    100% {
-        background-position: 100% 0; 
-    }
-}
-
-.rgb-divider::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: radial-gradient(ellipse at center, rgba(255, 0, 179, 0.5) 0%, transparent 70%); 
-    filter: blur(8px); 
-    opacity: 0.8;
-    z-index: -1; 
-    pointer-events: none; 
-}
-
-@media (max-width: 768px) {
-    .rgb-divider {
-        width: 90%;
-        margin: 70px auto;
-        height: 3px;
-    }
-    .rgb-divider::after {
-        height: 8px;
-        filter: blur(6px);
-    }
-}
-
 #habilidades {
     text-align: center;
     margin-bottom: 50px;
@@ -307,9 +245,9 @@ section {
 
 .skills-grid {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 70px; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 70px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -324,22 +262,22 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 150px; 
-    height: 150px; 
-    cursor: pointer; 
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out;
     overflow: hidden;
 }
 
 .skill-item img {
-    max-width: 80px; 
+    max-width: 80px;
     height: auto;
     margin-bottom: 10px;
     transition: transform 0.3s ease-out;
 }
 
 .skill-item .skill-name {
-    color: #ffe6fb; 
+    color: #ffe6fb;
     font-weight: 600;
     font-size: 1.1em;
     transition: color 0.3s ease-out;
@@ -356,43 +294,42 @@ section {
 }
 
 .skill-item:hover .skill-name {
-    color: #ff66f7; 
+    color: #ff66f7;
 }
 
 .info-bubble {
-    position: fixed; 
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
-    background-color: rgba(20, 20, 40, 0.95); 
+    transform: translate(-50%, -50%);
+    background-color: rgba(20, 20, 40, 0.95);
     border: 1px solid #ff66f7;
     border-radius: 10px;
     padding: 30px;
     max-width: 400px;
     color: #ffe6fb;
-    box-shadow: 0 10px 30px rgba(247, 0, 255, 0.4); 
-    z-index: 1000; 
-    display: none; 
+    box-shadow: 0 10px 30px rgba(247, 0, 255, 0.4);
+    z-index: 1000;
+    display: none;
     animation: fadeInScale 0.3s ease-out forwards;
 }
 
 .info-bubble.show {
-    display: block; 
+    display: block;
 }
 
 .info-bubble h3 {
-    color: #ff66f7;
+    color: var(--rosa-bebe);
     margin-bottom: 15px;
     font-size: 1.6em;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Righteous', sans-serif;
+    font-weight: 400;
 }
 
 .info-bubble p {
     font-size: 1em;
     line-height: 1.6;
     margin-bottom: 20px;
-    font-family: 'Open Sans', sans-serif;
 }
 
 #bubble-close {
@@ -400,8 +337,8 @@ section {
     top: 10px;
     right: 10px;
     background-color: transparent;
-    border: 2px solid #ff66f7;
-    color: #ff66f7;
+    border: 2px solid var(--rosa-bebe);
+    color: var(--rosa-bebe);
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -411,8 +348,8 @@ section {
 }
 
 #bubble-close:hover {
-    background-color: #ff66f7;
-    color: #202030; 
+    background-color: var(--rosa-bebe);
+    color: #202030;
     transform: rotate(90deg);
 }
 
@@ -441,46 +378,38 @@ section {
 }
 
 #sobre-mi {
-    padding: 80px 0; 
+    padding: 80px 0;
     position: relative;
     z-index: 3;
 }
 
 .about-me-container {
     display: flex;
-    flex-direction: row; 
-    align-items: center; 
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     max-width: 1200px;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 0 40px;
     gap: 80px;
 }
 
 .about-me-content {
-    flex: 1; 
-    max-width: 600px; 
-    text-align: left;
-}
-
-#sobre-mi h2 {
-    font-size: 3.5em;
-    color: #fa4fee;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(250, 79, 238, 0.5);
+    flex: 1;
+    max-width: 600px;
     text-align: left;
 }
 
 #sobre-mi p {
     font-size: 1.1em;
     line-height: 1.8;
-    margin-bottom: 20px; 
-    color: #ffe6fb; 
+    margin-bottom: 20px;
+    color: var(--color-parrafo);
 }
 
 .highlight-text {
     color: #66ccff;
-    font-weight: 700; 
+    font-weight: 700;
     text-shadow: 0 0 5px rgba(102, 204, 255, 0.4);
 }
 
@@ -490,40 +419,38 @@ section {
 
 .call-to-action p {
     font-size: 1.2em;
-    font-weight: 600;
-    color: #ffe6fb;
+    color: var(--color-parrafo);
 }
 
 .btn-contact {
     display: inline-block;
-    background: linear-gradient(45deg, #fa4fee, #66ccff); 
-    color: #ffe6fb;
+    background: var(--rosa-bebe);
+    color: #4a2340;
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.1em;
     margin-top: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .btn-contact:hover {
-    transform: translateY(-3px); 
-    box-shadow: 0 8px 25px rgba(250, 79, 238, 0.5); 
-    background: linear-gradient(45deg, #66ccff, #fa4fee);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(248, 200, 220, 0.35);
+    background: #fbd9e7;
 }
 
 .about-me-visual {
-    flex-shrink: 0; 
-    width: 300px; 
-    height: 300px; 
-    border-radius: 50%; 
-    overflow: hidden; 
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
     border: 3px solid #fa4fee;
-    box-shadow: 0 0 25px rgba(250, 79, 238, 0.5), inset 0 0 15px rgba(250, 79, 238, 0.5); 
-    display: flex; 
+    box-shadow: 0 0 25px rgba(250, 79, 238, 0.5), inset 0 0 15px rgba(250, 79, 238, 0.5);
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -541,18 +468,13 @@ section {
 
 @media (max-width: 992px) {
     .about-me-container {
-        flex-direction: column; 
+        flex-direction: column;
         gap: 40px;
         padding: 0 20px;
     }
 
     .about-me-content {
-        max-width: 100%; 
-        text-align: center;
-    }
-
-    #sobre-mi h2 {
-        font-size: 2.8em;
+        max-width: 100%;
         text-align: center;
     }
 
@@ -571,11 +493,6 @@ section {
         padding: 60px 0;
     }
 
-    #sobre-mi h2 {
-        font-size: 2.2em;
-        margin-bottom: 20px;
-    }
-
     #sobre-mi p {
         font-size: 1em;
         line-height: 1.6;
@@ -589,7 +506,7 @@ section {
 
 .hidden-fade {
     opacity: 0;
-    transform: translateY(50px); 
+    transform: translateY(50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -599,56 +516,56 @@ section {
 }
 
 .hidden-scroll {
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: opacity, transform;
 }
 
 .visible-scroll {
-    opacity: 1; 
-    transform: translateY(0); 
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .social-bubble {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
-    background-color: rgba(20, 20, 40, 0.98); 
-    border: 2px solid #fa4fee; 
+    transform: translate(-50%, -50%);
+    background-color: rgba(20, 20, 40, 0.98);
+    border: 2px solid #fa4fee;
     border-radius: 15px;
     padding: 30px;
-    display: flex; 
-    gap: 30px; 
+    display: flex;
+    gap: 30px;
     justify-content: center;
     align-items: center;
     box-shadow: 0 10px 40px rgba(250, 79, 238, 0.6);
-    z-index: 1100; 
-    opacity: 0; 
-    pointer-events: none; 
+    z-index: 1100;
+    opacity: 0;
+    pointer-events: none;
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .social-bubble.show {
     opacity: 1;
-    pointer-events: auto; 
-    transform: translate(-50%, -50%) scale(1); 
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .social-bubble a {
-    display: block; 
+    display: block;
     transition: transform 0.2s ease-out;
 }
 
 .social-bubble a:hover {
-    transform: scale(1.15); 
+    transform: scale(1.15);
 }
 
 .social-bubble img {
     width: 40px;
     height: 40px;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); 
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 
 .social-bubble .social-bubble-close {
@@ -657,28 +574,28 @@ section {
     top: 15px;
     right: 15px;
     background-color: transparent;
-    border: 2px solid #e3e66a; 
-    color: #e3e66a;
+    border: 2px solid var(--rosa-bebe);
+    color: var(--rosa-bebe);
     border-radius: 50%;
     width: 35px;
     height: 35px;
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s, transform 0.2s;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .social-bubble .social-bubble-close:hover {
-    background-color: #e3e66a;
+    background-color: var(--rosa-bebe);
     color: #202030;
     transform: rotate(90deg);
 }
 
 @media (max-width: 600px) {
     .social-bubble {
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         gap: 15px;
         padding: 20px;
         width: 90%;
@@ -697,45 +614,41 @@ section {
 }
 
 #projects-section {
-    width: 100%;
-    height: 55vh;
+    width: auto;
+    min-height: 55vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-#projects-section h2 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #fa4fee;
-    text-shadow: 0 0 10px rgba(250, 79, 238, 0.5);
-}
-        
+
+
 .carousel-window {
-    width: 470px;
+    width: min(470px, 100%);
     height: 400px;
     overflow: hidden;
 }
 
 .projects-container {
     display: flex;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .project {
+    --pad: 40px;
     flex-shrink: 0;
-    width: 450px;
+    width: calc(100% - 20px);
     height: 400px;
-    background-color: transparent; 
+    background-color: transparent;
     color: #fff;
     margin-right: 50px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: var(--pad);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
     position: relative;
@@ -743,23 +656,29 @@ section {
 
 .project h3,
 .project p {
-    text-align: center; 
+    text-align: center;
     margin: 0;
 }
 
 .project h3 {
-    margin-top: 10px; 
+    margin-top: 10px;
+}
+
+/* Todos los párrafos con el mismo rosado suave */
+.project p,
+.info-bubble p {
+    color: var(--color-parrafo);
 }
 
 .project img {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    margin: -40px -40px 20px -40px;
+    margin: calc(-1 * var(--pad)) calc(-1 * var(--pad)) 20px calc(-1 * var(--pad));
 }
 
 .project a {
-    display: block; 
+    display: block;
     width: 100%;
 }
 
@@ -790,7 +709,7 @@ section {
 
 #hover-message {
     position: absolute;
-    top: 40%; 
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(51, 51, 51, 0.8);
@@ -805,14 +724,14 @@ section {
 
 #copy-message {
     position: absolute;
-    top: 35%; 
+    top: 35%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #28a745;
     color: #ffe6fb;
     padding: 10px 20px;
     border-radius: 5px;
-    opacity: 0; 
+    opacity: 0;
     transition: opacity 0.3s ease-in-out;
     z-index: 10;
 }
@@ -835,6 +754,8 @@ section#contacto {
 }
 
 :root {
+    --color-parrafo: #d9c3d6;
+    --rosa-bebe: #f8c8dc;       /* rosado bebé suavecito para los títulos */   /* rosado suave para los párrafos (se ve más liviano que casi blanco) */
     --color-primary: #121212;
     --color-secondary: #1e1e1e;
     --color-text: #e0e0e0;
@@ -842,6 +763,7 @@ section#contacto {
 }
 
 .neon-border {
+    width: min(810px, 100%);
     position: relative;
     z-index: 1;
     padding: 5px;
@@ -866,7 +788,7 @@ section#contacto {
         #00e6e6 50%,
         #e00bd6 62.5%,
         #0000ff 75%,
-        #ff0000 100% 
+        #ff0000 100%
     );
     background-size: 400% 400%;
     animation: move-gradient 5s ease-in-out infinite;
@@ -881,7 +803,7 @@ section#contacto {
 .form-container {
     position: relative;
     z-index: 2;
-    width: 800px;
+    width: 100%;
     max-width: 800px;
     padding: 2.5rem;
     background: var(--color-secondary);
@@ -890,11 +812,16 @@ section#contacto {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
+/* Formato único para los títulos de todas las secciones */
 h2 {
+    font-family: 'Righteous', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    color: var(--rosa-bebe);
+    text-shadow: 0 0 12px rgba(248, 200, 220, 0.18);   /* brillo apenas perceptible */
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--color-text);
-    font-weight: 600;
+    line-height: 1.2;
 }
 
 .input-group {
@@ -957,6 +884,811 @@ h2 {
     color: #ccc;
 }
 
-html, body {
+html {
     overflow-x: hidden;
+}
+
+/* "clip" en vez de "hidden": recorta igual, pero no convierte al body en
+   un contenedor de scroll (eso rompería el scroll-snap de las secciones) */
+body {
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+
+/* =========================================================
+   RESPONSIVE: tablet y celular
+   ========================================================= */
+
+/* Tablet vertical y celular: el correo 3D pasa arriba del título */
+@media (max-width: 900px) {
+    #canvas-texto-3d {
+        position: relative;
+        width: 100%;
+        height: 42vh;
+        margin-top: 60px;      /* debajo del menú fijo */
+    }
+
+    #inicio {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    #sidebar {
+        width: 100%;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    #hover-message {
+        display: none;         /* en pantallas táctiles no hay "hover" */
+    }
+
+    section {
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    header {
+        padding: 12px 0;
+    }
+
+    .main-nav {
+        padding: 0 14px;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+    }
+
+    .nav-left {
+        display: none;
+    }
+
+    .nav-center {
+        gap: 16px;
+    }
+
+    .main-nav a {
+        font-size: 0.9rem;
+    }
+
+    .nav-right {
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    #canvas-texto-3d {
+        height: 30vh;
+        margin-top: 50px;
+    }
+
+    section {
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-top: 30px;
+    }
+
+    /* Habilidades: 3 por fila */
+    .skills-grid {
+        gap: 14px;
+        padding: 10px 0;
+    }
+
+    .skill-item {
+        width: 86px;
+        height: 86px;
+        padding: 16px;
+    }
+
+    .skill-item img {
+        max-width: 50px;
+        margin-bottom: 0;
+    }
+
+    .carousel-window {
+        height: 340px;
+    }
+
+    .project {
+        --pad: 24px;
+        height: 340px;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    section#contacto {
+        padding: 20px 12px;
+    }
+}
+
+/* Celulares muy angostos: el menú se acomoda en dos filas */
+@media (max-width: 380px) {
+    .main-nav {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 8px;
+    }
+
+    .nav-right {
+        justify-self: center;
+    }
+
+    #canvas-texto-3d {
+        margin-top: 80px;
+    }
+}
+
+
+/* =========================================================
+   SCROLL POR SECCIONES
+   ========================================================= */
+
+:root {
+    --alto-menu: 54px;          /* alto del menú fijo */
+}
+
+html {
+    scroll-behavior: smooth;                 /* saltos suaves desde el menú */
+    scroll-padding-top: var(--alto-menu);    /* que el menú no tape el inicio de la sección */
+}
+
+/* Compu: cada sección es una pantalla completa, con su propio fondo, y las
+   5 pantallas son las caras de un pentágono 3D que gira (lo anima
+   js/paginas.js). Afuera de las pantallas todo es negro. La página no
+   scrollea: si una sección tiene más contenido, scrollea por dentro. */
+@media (min-width: 769px) {
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;     /* el fondo negro donde "viven" las pantallas */
+    }
+
+    /* el fondo fijo de manchas es solo para teléfono; aquí cada página trae el suyo */
+    #manchas {
+        display: none;
+    }
+
+    #paginas {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        perspective: 2400px;        /* igual que PERSPECTIVA en js/paginas.js */
+        perspective-origin: 50% 50%;
+    }
+
+    .carril {
+        position: absolute;
+        inset: 0;
+        transform-style: preserve-3d;
+    }
+
+    /* En reposo solo se ve la página actual, plana */
+    #paginas .pagina {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        background-color: #020c19;  /* cada pantalla con su propio fondo */
+        isolation: isolate;         /* su fondo de manchas queda detrás de su contenido */
+        backface-visibility: hidden;
+        visibility: hidden;
+        padding: calc(var(--alto-menu) + 24px) 75px 24px 50px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(248, 200, 220, 0.35) transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: safe center;   /* centrado, sin cortar si el contenido es más alto */
+        border-radius: 0;
+        transition: border-radius 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    #paginas .pagina.actual {
+        visibility: visible;
+    }
+
+    /* Mientras gira el pentágono se ven todas las caras */
+    #paginas.en-3d .pagina {
+        visibility: visible;
+    }
+
+    /* Mientras gira: esquinas redondeadas y un filo de luz casi invisible;
+       el detalle es la chispita que recorre el borde (.borde-chispa) */
+    #paginas.redondeadas .pagina {
+        border-radius: 28px;
+        box-shadow: 0 0 0 1px rgba(255, 236, 246, 0.16);
+    }
+
+    #paginas.redondeadas .borde-chispa {
+        opacity: 1;
+    }
+
+    /* el fondo de manchas de cada página */
+    #paginas .fondo-pagina {
+        display: block;
+    }
+
+    #paginas #inicio {
+        flex-direction: row;
+        justify-content: flex-start;   /* el título a la izquierda, como antes */
+        align-items: center;
+        padding: var(--alto-menu) 0 0 0;
+        overflow: hidden;              /* la página principal no scrollea por dentro */
+    }
+
+    /* el correo 3D vive dentro de Inicio, en la mitad derecha */
+    #canvas-texto-3d {
+        position: absolute;
+        top: var(--alto-menu);
+        right: 0;
+        width: 50%;
+        height: calc(100% - var(--alto-menu));
+        margin-top: 0;
+    }
+
+    #paginas #contacto {
+        align-items: center;
+    }
+}
+
+/* Tablet (769–900px): ahí el correo 3D va arriba del título */
+@media (min-width: 769px) and (max-width: 900px) {
+    #paginas #inicio {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 48vh;          /* el título justo debajo del correo */
+    }
+
+    #canvas-texto-3d {
+        top: calc(var(--alto-menu) + 6vh);
+        width: 100%;
+        height: 40vh;
+    }
+}
+
+/* Teléfono: scroll normal, una sección debajo de la otra */
+@media (max-width: 768px) {
+    #inicio {
+        flex-direction: column;
+    }
+
+    section.pagina {
+        margin-top: 80px;           /* reemplaza el espacio de las barras que separaban */
+    }
+}
+
+/* Que los íconos de la derecha no queden pegados al borde (ni se corten) */
+@media (max-width: 1240px) and (min-width: 601px) {
+    .main-nav {
+        padding: 0 20px;
+    }
+}
+
+/* =========================================================
+   MENÚ DE ÍCONOS + BURBUJA
+   ========================================================= */
+
+.nav-center {
+    position: relative;     /* la burbuja se ubica respecto al menú */
+    gap: 14px;
+    align-items: center;
+}
+
+.nav-center li {
+    position: relative;
+    z-index: 1;             /* los íconos van encima de la burbuja */
+}
+
+.nav-center a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.nav-center a svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.2s ease;
+}
+
+.nav-center a:hover svg {
+    transform: translateY(-2px);
+}
+
+.nav-center a.activo,
+.nav-center a.activo:hover {
+    color: #5a2a4c;             /* ícono oscuro para que se lea sobre el rosado bebé */
+}
+
+/* Al pasar el mouse se ve igual que la sección activa (ícono morado oscuro
+   sobre rosado bebé), con un círculo más suave para no confundirlo con la burbuja */
+.nav-center a:not(.activo):hover {
+    color: #5a2a4c;
+    background-color: rgba(248, 200, 220, 0.7);
+}
+
+.nav-center a {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-center a:focus-visible {
+    outline: 2px solid #66ccff;
+    outline-offset: 2px;
+}
+
+/* La burbuja: un círculo con los colores del sitio detrás del ícono activo */
+.nav-center .burbuja {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fde6f0, var(--rosa-bebe));
+    box-shadow: 0 0 14px rgba(248, 200, 220, 0.45);
+    z-index: 0;
+    pointer-events: none;
+    transform-origin: 50% 100%;   /* se aplasta contra el "piso" al caer */
+    opacity: 0;                   /* aparece cuando JS la ubica */
+    transition: opacity 0.3s ease;
+}
+
+.nav-center .burbuja.lista {
+    opacity: 1;
+}
+
+/* Tooltip con el nombre (solo donde hay mouse) */
+@media (hover: hover) {
+    .nav-center a::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translate(-50%, -4px);
+        padding: 5px 10px;
+        border-radius: 6px;
+        background-color: rgba(20, 20, 40, 0.95);
+        border: 1px solid var(--rosa-bebe);
+        color: #ffe6fb;
+        font-size: 0.8rem;
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-center a:hover::after,
+    .nav-center a:focus-visible::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Teléfono: íconos un poco más chicos para que todo quepa */
+@media (max-width: 600px) {
+    .nav-center {
+        gap: 6px;
+    }
+
+    .nav-center a,
+    .nav-center .burbuja {
+        width: 36px;
+        height: 36px;
+    }
+
+    .nav-center .burbuja {
+        margin-top: -18px;
+    }
+
+    .nav-center a svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+
+/* =========================================================
+   FORMULARIO DE CONTACTO
+   ========================================================= */
+
+/* Sin el marco RGB: solo envuelve a la tarjeta */
+.neon-border {
+    width: min(700px, 100%);
+    padding: 0;
+    border-radius: 26px;
+    overflow: visible;
+}
+
+.neon-border::before {
+    display: none;
+}
+
+/* Tarjeta de vidrio líquido: transparente, desenfoca lo de atrás
+   (las manchas) y tiene reflejos iridiscentes */
+.form-container {
+    position: relative;
+    max-width: 690px;
+    padding: 2.6rem 2.6rem 2.2rem;
+    border-radius: 26px;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.08));
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    backdrop-filter: blur(22px) saturate(170%);
+    border: none;
+}
+
+/* Toque iridiscente: un velo de colores que se mueve despacio */
+.form-container::before,
+.project::before {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    z-index: -1;
+    background: conic-gradient(
+        from 0deg,
+        rgba(248, 200, 220, 0.30),
+        rgba(190, 170, 255, 0.26),
+        rgba(140, 220, 255, 0.24),
+        rgba(170, 255, 220, 0.20),
+        rgba(255, 230, 170, 0.22),
+        rgba(248, 200, 220, 0.30)
+    );
+    filter: blur(40px);
+    opacity: 0.55;
+    animation: iridiscencia 14s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes iridiscencia {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form-container::before,
+    .project::before {
+        animation: none;
+    }
+}
+
+.form-container h2 {
+    margin-bottom: 0.6rem;
+}
+
+.form-subtitulo {
+    text-align: center;
+    color: var(--color-parrafo);
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+}
+
+/* Nombre y correo lado a lado */
+.form-fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.2rem;
+}
+
+.input-group label {
+    color: #cdb8c9;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+}
+
+/* Campo con ícono adentro */
+.campo {
+    position: relative;
+}
+
+.campo svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+    color: #8f7a8c;
+    pointer-events: none;
+    transition: color 0.25s ease;
+}
+
+.campo-mensaje svg {
+    top: 16px;
+    transform: none;
+}
+
+.campo:focus-within svg {
+    color: var(--rosa-bebe);
+}
+
+.input-group input,
+.input-group textarea {
+    padding: 14px 14px 14px 44px;
+    background: rgba(10, 8, 20, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #75667a;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--rosa-bebe);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 3px rgba(248, 200, 220, 0.15);
+}
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0.4rem;
+    border-radius: 999px;
+    background: var(--rosa-bebe);
+    color: #4a2340;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(248, 200, 220, 0.18);
+}
+
+.submit-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.25s ease;
+}
+
+.submit-btn:hover {
+    background: #fbd9e7;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(248, 200, 220, 0.3);
+}
+
+.submit-btn:hover svg {
+    transform: translate(3px, -3px);   /* el avioncito "despega" */
+}
+
+@media (max-width: 600px) {
+    .form-fila {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        padding: 1.8rem 1.3rem 1.5rem;
+    }
+}
+
+/* Fondo de manchas propio de cada página (solo se usa en compu) */
+.fondo-pagina {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   VIDRIO CON PROFUNDIDAD (tarjeta de contacto y de proyectos)
+   Sin borde sólido: el "grosor" sale de capas de luz (arriba a la
+   izquierda) y sombra (abajo a la derecha), y de varias sombras
+   apiladas que la despegan del fondo. Con el mouse se inclina un
+   poquito y una luz sigue al cursor (js/profundidad.js).
+   ========================================================= */
+
+.form-container,
+.project {
+    box-shadow:
+        inset 1px 1px 0 rgba(255, 255, 255, 0.28),     /* canto iluminado */
+        inset -1px -1px 0 rgba(0, 0, 0, 0.35),         /* canto en sombra */
+        inset 0 0 40px rgba(255, 255, 255, 0.04),      /* luz dentro del vidrio */
+        /* sombra corta y pegada a la tarjeta, igual en Contacto y Proyectos:
+           no se abre hacia afuera, así el carrusel nunca la corta */
+        0 2px 4px rgba(0, 0, 0, 0.18),
+        0 8px 16px -8px rgba(0, 0, 0, 0.45),
+        0 18px 26px -20px rgba(248, 200, 220, 0.28);   /* reflejo rosado debajo */
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+    will-change: transform;
+}
+
+/* Luz que sigue al cursor */
+.form-container::after,
+.project::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--luz-x, 25%) var(--luz-y, 0%), rgba(255, 255, 255, 0.13), transparent 45%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.form-container.con-luz::after,
+.project.con-luz::after {
+    opacity: 1;
+}
+
+/* Tarjetas de proyectos con el mismo vidrio */
+/* el mismo vidrio de la tarjeta de contacto (con su velo iridiscente) */
+.project {
+    border-radius: 20px;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.08));
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    backdrop-filter: blur(22px) saturate(170%);
+}
+
+.project h3 {
+    color: #ffe6fb;
+}
+
+/* Espacio alrededor del carrusel para que las sombras de las tarjetas
+   no se corten (el margen negativo evita que cambie el tamaño de la sección).
+   A los lados es poco, para que no se asome la tarjeta siguiente. */
+.carousel-window {
+    --aire-x: 28px;
+    --aire-y: 90px;
+    padding: var(--aire-y) var(--aire-x);
+    margin: calc(-1 * var(--aire-y)) calc(-1 * var(--aire-x));
+    box-sizing: content-box;
+}
+
+@media (max-width: 600px) {
+    .carousel-window {
+        --aire-x: 20px;
+    }
+}
+
+/* =========================================================
+   RAYITOS DE LUZ EN EL BORDE DE LAS PANTALLAS
+   Mientras gira el pentágono, dos rayitos iridiscentes (en diagonal) le
+   dan la vuelta al borde de cada pantalla. Cada rayo son pedacitos cortos
+   en fila que solo se desplazan (los anima js/paginas.js), así la tarjeta
+   gráfica los mueve sin redibujar nada y va fluido.
+   ========================================================= */
+
+.borde-chispa {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .borde-chispa {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        /* lo que se sale de la chispa se recorta aquí; si no, el navegador
+           creía que había contenido de más y ponía y quitaba la barra de
+           scroll durante el giro (eso hacía que la página "se acomodara") */
+        overflow: hidden;
+        border-radius: 28px;
+    }
+
+    /* Nada corre en segundo plano: las animaciones de las páginas que no
+       están en pantalla, y las de todas mientras gira, quedan en pausa */
+    #paginas .pagina:not(.actual) *,
+    #paginas .pagina:not(.actual) *::before,
+    #paginas .pagina:not(.actual) *::after,
+    #paginas.en-3d .pagina *,
+    #paginas.en-3d .pagina *::before,
+    #paginas.en-3d .pagina *::after {
+        animation-play-state: paused !important;
+    }
+}
+
+/* cada pedacito del rayo (los colores y el brillo los pone js/paginas.js) */
+.rayo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 2.5px;
+    border-radius: 2px;
+    transform-origin: right center;
+    will-change: transform;
+}
+
+
+/* =========================================================
+   NAVEGADOR DE PROYECTOS (flechas y puntitos debajo de las tarjetas)
+   ========================================================= */
+
+.proyectos-nav {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.proyectos-flecha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(248, 200, 220, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--rosa-bebe);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.proyectos-flecha svg {
+    width: 18px;
+    height: 18px;
+}
+
+.proyectos-flecha:hover {
+    background: var(--rosa-bebe);
+    color: #5a2a4c;
+    transform: scale(1.08);
+}
+
+.proyectos-puntos {
+    display: flex;
+    gap: 8px;
+}
+
+.proyectos-punto {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: rgba(248, 200, 220, 0.3);
+    cursor: pointer;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* el proyecto que se está viendo: puntito alargado y rosado bebé */
+.proyectos-punto.activo {
+    width: 26px;
+    background: var(--rosa-bebe);
+}
+
+.proyectos-flecha:focus-visible,
+.proyectos-punto:focus-visible {
+    outline: 2px solid #66ccff;
+    outline-offset: 2px;
 }
